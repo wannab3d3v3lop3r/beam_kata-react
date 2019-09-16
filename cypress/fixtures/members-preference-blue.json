@@ -1,0 +1,9 @@
+[
+    {
+        "id": 4,
+        "member_id": 48,
+        "brush_color": "blue",
+        "motor_speed": 0.75,
+        "auto_off": false
+        }
+]

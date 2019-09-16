@@ -1,68 +1,140 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Beam Perks UI Exercise
+Here at Beam, we provide our members with "Beam Perks". These perks include the Beam Brush, Beam Paste, refill heads, and floss. Shipping is also included!
 
-## Available Scripts
+You will be providing a member with their very own "Member Details" page. From this page, they will be able to view their name, manage their shipping address, and view their selected brush options.
 
-In the project directory, you can run:
+## Getting Started
+While `npm` has been initialized in this repo, you are not required to use this repo as a base. Feel free to create your own project! Just be sure to include the files from `assets/` and `data/` in some format in your new project.
 
-### `npm start`
+### Expectations
+#### Language/Framework
+Our only expectation is that your language or framework compiles down to JavaScript. Outside of that, you're welcome to use whatever you prefer!
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**Please include instructions detailing how to run your submission in the README.**
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+run in terminal
+npm run start
 
-### `npm test`
+#### UI/UX Design
+You may have noticed: there is no mockup or prototype provided. You have free rein in the UI/UX Design of this exercise!
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+That's not to say we expect you to be a UI/UX Designer. At a minimum, we're just expecting to see tasteful layout and use of the theme styles we've provided in `/assets/css/styles.css`.
 
-### `npm run build`
+#### Design Decisions
+Please explain the technical decision making involved in designing your solution. What options were you considering at various levels (eg. tech stack choice, libraries/frameworks, and design for your code, as applicable) and what were the tradeoffs in choosing one option over another?
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Please include your decision making for this kata in the README.**
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Please explain the technical decision making involved in designing your solution. What options were you considering at various levels (eg. tech stack choice, libraries/frameworks, and design for your code, as applicable) and what were the tradeoffs in choosing one option over another?
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+I created the kata app to be designed mobile friendly and have it easier to spot information of the user's shipping address and brush preference. The tech stack used was React.js and Cypress. Before, I submitted using only javascript and jquery to render HTML structure from fetching data from specific endpoints and to have it render on the page in a react like fashion. With using React, it has its advantages of seperations of concerns, scalibity, rendering single pages and being able to reuse components. With the shipping address changing from view mode to edit mode without the need to refresh the page, React was the best choice. Lastly, with the role looking for a developer that knows how to use React, this would be the best way to show my knowledge of it.
 
-### `npm run eject`
+In terms of design, the goal is to have less negative space and have it easier to understand what is on the page. Since shipping address and brush options are the most important, I created a containers that pop out to the user. The simplicity of the colors 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Mocha and Chai was considered to be used as a testing framework, but Cypress had the upper hand since it had all in one bundle: testing framwork, assertion library and the ability to mock what the page will do when tested.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Guidelines
+Here follows a short guide to some of the things we look for in a good submission:
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+##### Testing
+Beam firmly believes in testing as a practice. As such we ask that you please include tests with your submission. We are expecting extensive well organized test coverage. Any behavior that results in change should be reflected with supporting tests. Don't forget to consider API handling in the coverage.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+**Instructions for running your tests should be included in the README.**
 
-## Learn More
+run in a new terminal line and make sure react app is running already. 
+npm run cypress:open
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+##### Language/Framework Fundamentals
+We will be looking for idiomatic framework/language patterns and practices. For example if a submission is making use of ES6 Javascript we will make not of how well you use ES6 paradigms.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+##### Architecture/Software Engineering Principles
+We are looking for a well designed, well written, and well structured project following good software engineering practices. If done correctly a second maintainer should be able to pick up your project and make alterations with ease. These principles should apply to the tests as well as the application code.
 
-### Code Splitting
+## Submitting your work to Beam
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+Please include a `.nvmrc` file with your submission so we know version of node you are using. There are differences between versions that can be significant to your application's runtime versus your reviewer's installed node version.
 
-### Analyzing the Bundle Size
+Once you're happy with your submission, you can send it back in one of two formats; either as a git bundle or a zip file.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+To create the git bundle simply execute:
 
-### Making a Progressive Web App
+```bash
+cd boxing-exercise
+git bundle create boxing-exercise.bundle <YOUR BRANCH NAME HERE>
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+This will create a `.bundle` file which contains the entire git repository in binary form, so you can easily send it as an attachment.  Alternately you could zip the project instead.
 
-### Advanced Configuration
+## Exercise
+The steps for this exercise are broken out into user stories below.
+### User Stories
+#### Member Details Page
+_As a Beam Member_
+_In order to view my member information_
+_I would like to have a Member Details page_
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Acceptance Criteria
+- There is a page for member details.
+- The page has a title of "Member Details".
+- The Beam logo (see `assets/images/beam_logo.svg`) is displayed at the top of the page.
 
-### Deployment
+#### Member's Name
+_As a Beam Member_
+_In order to confirm I am on the correct Member page_
+_I would like to view my name_
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+Acceptance Criteria
+- The member's `name` is displayed on the page. (See [Fetching the Member Data](#fetching-the-member-data))
+- It is displayed with a "Name" label.
 
-### `npm run build` fails to minify
+#### Member's Shipping Address
+_As a Beam Member_
+_In order to confirm my perks will be shipped to the correct address_
+_I would like to view my shipping address_
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Acceptance Criteria
+- The member's `shipping_address`, `shipping_city`, `shipping_state`, and `shipping_zip_code` are all displayed on the page. (See [Fetching the Member Data](#fetching-the-member-data))
+- They are displayed below a "Shipping Address" section label.
+
+#### Member's Shipping Address Update
+_As a Beam Member_
+_In order to be able to easily change my shipping address_
+_I would like the ability to update my shipping address on the Member Details page_
+
+Acceptance Criteria
+- There is an "Edit" button in the "Shipping Address" section.
+- When the "Edit" button is clicked:
+  - The Shipping Address section switches to an editable view.
+  - There is a form with fields for the `shipping_address`, `shipping_city`, `shipping_state`, and `shipping_zip_code` values. The fields are labeled Address, City, State, and Zip Code, respectively.
+  - There is an "Update" button below the form.
+- When the "Update" button is clicked:
+  - The shipping address change is "saved". (_An actual HTTP request is not required. The data change does not need to be persisted on reload._).
+  - The Shipping Address Section is switched back to the display-only view.
+  - The updated shipping address is displayed on the page.
+
+#### Member's Brush Preferences
+_As a Beam Member_
+_In order to confirm that my brush preferences are correct_
+_I would like to view my selected brush color, motor speed, and auto-off options._
+
+Acceptance Criteria
+- The member's `brush_color` is displayed on the page. (See [Fetching the Member Data](#fetching-the-member-data))
+  - It is displayed with a "Brush Color" label.
+  - It has an icon beside it that displays the actual color. (See `.beam-brush-blue`, `.beam-brush-pink`, and `.beam-brush-chartreuse` in `assets/css/styles.css`.)
+- The member's `motor_speed` and `auto_off` options are displayed on the page. (See [Fetching the Member Data](#fetching-the-member-data))
+  - They are labeled Motor Speed and Auto Off, respectively.
+  - The displayed `auto_off` value is `Yes` for `true` and `No` for `false`.
+
+---
+
+### Fetching the Member Data
+For this exercise, you'll be displaying the data for a member named "Remy LeBeau". We've gone ahead and searched for his name in the system. You can can read the data through our API layer at [https://member-data.beam.dental/searchResults.json](https://member-data.beam.dental/searchResults.json).
+
+Unfortunately, his data has gotten a little messed up. There are some invalid records that you'll need to sort through to get his current data. The valid member record for Remy:
+- Does not have a `primary_insured_id`. (He's his own primary insured.)
+- Does not have a `terminated_at` date. (He still has insurance active.)
+- Has the most recent `effective_date`. (Older ones might not be attached to the correct data anymore.)
+
+Once you have the record for Remy, you'll need to use that to get his member preferences. You can find the member preferences at [https://member-data.beam.dental/memberPreferences.json](https://member-data.beam.dental/memberPreferences.json). Member preference records are tied to the member by the `member_id`. Use the `id` of the member record you found earlier to get the correct preferences.
+
+The member record and member preferences for Remy should be fetched **together** via HTTP Request to allow for a smooth user viewing experience.
