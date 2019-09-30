@@ -3,19 +3,16 @@ import { Route, Link } from 'react-router-dom'
 import MembershipDetails from './components/MembershipDetails'
 import BrushDetails from './components/BrushDetails'
 import EditForm from './components/EditForm'
-import Error from './components/Error'
 import beam_logo from './assets/image/beam_logo.svg'
 import './App.css'
 
 export class App extends Component {
 
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
         correctUser: {},
-        preferences: [],
-        hasError: false,
-        errMsg: ''
+        preferences: {}
     }
   }
 
@@ -28,27 +25,27 @@ export class App extends Component {
     let brushPreference = fetch('https://member-data.beam.dental/memberPreferences.json');
 
     Promise.all([membership, brushPreference])
-        .then(values => Promise.all(values.map(value => value.json())))
+        .then(values => {
+          console.log(values)
+          return Promise.all(values.map(value => value.json()))
+        })
         .then(finalVals => {
             this.storeCorrectMemberData(finalVals[0])
             this.storePreferenceData(finalVals[1])
         })  
         .catch(err => {
-            this.errorState(err);
+            console.log(err);
         })
-  }
-
-  errorState = err => {
-    this.setState({hasError: true, errMsg: err})
-    console.log(`err is `, this.state.errMsg)
   }
 
   storeCorrectMemberData = data =>{
     this.setState({correctUser: this.findCorrectUser(data)})
+    console.log(this.state.correctUser)
   }
 
   storePreferenceData = data => {
     this.setState({preferences: this.findBrushPreference(data, this.state.correctUser)})
+    console.log(this.state.preferences)
   }
 
   findCorrectUser(data){
@@ -72,7 +69,7 @@ export class App extends Component {
 
   render() {
 
-    const {correctUser, preferences, hasError} = this.state;
+    const {correctUser, preferences} = this.state;
 
     return (
       <div className="app">
@@ -81,24 +78,20 @@ export class App extends Component {
             <img className="logo" src={beam_logo} alt="beam logo"/>
           </Link>
         </header>
-        {hasError ? <Error errMsg={this.state.errMsg}/> :
-        <section className="membership-container">
+        <div className="membership-container">
           <h1 className="membership-title beam-title">Membership Details</h1>
           <p className="membership-name beam-text"><span className="beam-label">Name:</span> {correctUser.name}</p>
-          <div className="membership-info">
-            <Route
-              path="/" exact
-              render={() => <MembershipDetails member={correctUser}/>}
-            />
-            <Route 
-              path="/edit-shipping"
-              render={() => <EditForm member={correctUser} updateShippingAddress={updateShippingAddress => this.updateShippingAddress(updateShippingAddress)}/>}
-            />
-            <BrushDetails brushPreference={preferences}/>
-            </div>
-        </section>
-        }
-      <footer></footer>
+          <Route
+            path="/" exact
+            render={() => <MembershipDetails member={correctUser}/>}
+          />
+          <Route 
+            path="/edit-shipping"
+            render={() => <EditForm member={correctUser} updateShippingAddress={updateShippingAddress => this.updateShippingAddress(updateShippingAddress)}/>}
+          />
+          <BrushDetails brushPreference={preferences}/>
+        </div>
+        <footer></footer>
       </div>
     )
   }

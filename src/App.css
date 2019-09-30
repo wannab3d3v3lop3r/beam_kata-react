@@ -65,7 +65,7 @@ h1, .err-page, .membership-name {
 }
 
 #shipping-form {
-  width: 70%;
+  width: 100%;
   height: auto;
   vertical-align: top;
   border-radius: 10px;

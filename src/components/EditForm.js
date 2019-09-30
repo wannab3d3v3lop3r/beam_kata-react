@@ -26,6 +26,12 @@ export class EditForm extends Component {
         this.props.history.push('/')
     }
 
+    onHandleInputs = e => {
+        let value = e.target.value
+        let name = e.target.name;
+        this.setState({[name]: value})
+    }
+
     render() {
         const { member } = this.props;
         return (
@@ -39,7 +45,7 @@ export class EditForm extends Component {
                             type="text" 
                             name="address"
                             placeholder={member.shipping_address}
-                            onChange={e => this.setState({address: e.target.value})}
+                            onChange={e => this.onHandleInputs(e)}
                             required
                         />
                     </div>
@@ -51,7 +57,7 @@ export class EditForm extends Component {
                             type="text" 
                             name="city"
                             placeholder={member.shipping_city} 
-                            onChange={e => this.setState({city: e.target.value})}
+                            onChange={e => this.onHandleInputs(e)}
                             required/>
                     </div>
                     <div className="input-container">
@@ -62,7 +68,7 @@ export class EditForm extends Component {
                             type="text" 
                             name="state"
                             placeholder={member.shipping_state} 
-                            onChange={e => this.setState({state: e.target.value})}
+                            onChange={e => this.onHandleInputs(e)}
                             pattern="[A-za-z]{2}"
                             required
                         />
@@ -75,7 +81,7 @@ export class EditForm extends Component {
                             type="text" 
                             name="zipcode"
                             placeholder={member.shipping_zip_code} 
-                            onChange={e => this.setState({zipcode: e.target.value})}
+                            onChange={e => this.onHandleInputs(e)}
                             pattern="[0-9]{5}"
                             required
                         />
